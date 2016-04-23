@@ -4,6 +4,7 @@ package com.adityaladwa.letsalert.dagger.component;
 import android.content.SharedPreferences;
 
 import com.adityaladwa.letsalert.MainActivity;
+import com.adityaladwa.letsalert.SignUpActivity;
 import com.adityaladwa.letsalert.dagger.module.AppModule;
 import com.adityaladwa.letsalert.dagger.module.NetModule;
 
@@ -18,6 +19,8 @@ import dagger.Component;
 @Component(modules = {AppModule.class, NetModule.class})
 public interface NetComponent {
     void inject(MainActivity activity);
+
+    void inject(SignUpActivity activity);
 
     SharedPreferences getSharedPreference();
 }
