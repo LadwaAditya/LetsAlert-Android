@@ -30,10 +30,10 @@ import rx.schedulers.Schedulers;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    People people;
 
     @Bind(R.id.btn_signup)
     Button signup;
-
     @Bind(R.id.input_name)
     EditText name;
     @Bind(R.id.input_email)
@@ -51,7 +51,6 @@ public class SignUpActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         ((App) getApplication()).getNetComponent().inject(this);
 
-
     }
 
     @OnClick(R.id.btn_signup)
@@ -62,12 +61,12 @@ public class SignUpActivity extends AppCompatActivity {
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
 
-        People people = new People();
+        people = new People();
         people.setName(name.getText().toString());
         people.setEmail(email.getText().toString());
         people.setPhone(phone.getText().toString());
 
-        Call<People> call = retrofit.create(EndPoint.class).signUp(people);
+
 
         retrofit.create(EndPoint.class).signUpRx(people).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -102,30 +101,6 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(SignUpActivity.this, people.getName(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
-
-//        call.enqueue(new Callback<People>() {
-//            @Override
-//            public void onResponse(Call<People> call, Response<People> response) {
-//                if (response.body() == null)
-//                    try {
-//                        Error error = (Error) retrofit.responseBodyConverter(Error.class, Error.class.getAnnotations()).convert(response.errorBody());
-//                        Toast.makeText(SignUpActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-//                        progressDialog.hide();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                else {
-//                    Toast.makeText(SignUpActivity.this, response.body().toString(), Toast.LENGTH_SHORT).show();
-//                    progressDialog.hide();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<People> call, Throwable t) {
-//                Toast.makeText(SignUpActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
     }
 }

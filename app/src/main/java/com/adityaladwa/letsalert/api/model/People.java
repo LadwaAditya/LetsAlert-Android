@@ -12,9 +12,9 @@ public class People implements Parcelable {
     private String gcm;
     private String email;
     private String phone;
+    private String[] subscribe;
 
     public People() {
-
     }
 
     protected People(Parcel in) {
@@ -22,6 +22,7 @@ public class People implements Parcelable {
         gcm = in.readString();
         email = in.readString();
         phone = in.readString();
+        subscribe = in.createStringArray();
     }
 
     public static final Creator<People> CREATOR = new Creator<People>() {
@@ -68,6 +69,14 @@ public class People implements Parcelable {
         this.phone = phone;
     }
 
+    public String[] getSubscribe() {
+        return subscribe;
+    }
+
+    public void setSubscribe(String[] subscribe) {
+        this.subscribe = subscribe;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -79,5 +88,6 @@ public class People implements Parcelable {
         dest.writeString(gcm);
         dest.writeString(email);
         dest.writeString(phone);
+        dest.writeStringArray(subscribe);
     }
 }
