@@ -8,4 +8,6 @@
     <string name="pref_login">login</string>
     <string name="pref_token">token</string>
     <string name="extra_token">extra_token</string>
+    <string name="pref_user_name">pref_user_name</string>
+    <string name="pref_user_email">pref_user_email</string>
 </resources>

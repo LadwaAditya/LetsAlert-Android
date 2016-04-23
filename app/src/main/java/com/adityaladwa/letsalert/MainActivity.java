@@ -15,14 +15,14 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     SharedPreferences mSharedPreferences;
-    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setupDrawer();
 
+
+        setupDrawer();
         mSharedPreferences = ((App) getApplication()).getNetComponent().getSharedPreference();
 
         boolean login = mSharedPreferences.getBoolean(getString(R.string.pref_login), false);
@@ -31,10 +31,6 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
             finish();
         }
-
-//        editor = mSharedPreferences.edit();
-//        editor.putBoolean("login", false);
-//        editor.apply();
 
 
     }
@@ -77,9 +73,6 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 

@@ -79,6 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
         people.setPhone(phone.getText().toString());
         people.setSubscribe(sub);
 
+
         mBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -93,7 +94,9 @@ public class SignUpActivity extends AppCompatActivity {
                             public void onCompleted() {
                                 progressDialog.hide();
                                 editor = mSharedPreferences.edit();
-                                editor.putBoolean("login", true);
+                                editor.putBoolean(getString(R.string.pref_login), true);
+                                editor.putString(getString(R.string.pref_user_name), name.getText().toString());
+                                editor.putString(getString(R.string.pref_user_email), email.getText().toString());
                                 editor.apply();
                                 finish();
                                 startActivity(new Intent(SignUpActivity.this, MainActivity.class));
