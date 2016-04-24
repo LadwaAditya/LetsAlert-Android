@@ -9,10 +9,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    public static final String TAG = MainActivity.class.getSimpleName();
 
     SharedPreferences mSharedPreferences;
 
@@ -20,7 +24,6 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         setupDrawer();
         mSharedPreferences = ((App) getApplication()).getNetComponent().getSharedPreference();
@@ -31,7 +34,10 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
             finish();
         }
-
+        if (findViewById(R.id.main_frame_container) != null) {
+            Log.d(TAG, "Frame container present");
+            getSupportFragmentManager().beginTransaction().add(R.id.main_frame_container, new MainFragment()).commit();
+        }
 
     }
 
