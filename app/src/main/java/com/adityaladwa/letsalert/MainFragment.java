@@ -37,6 +37,8 @@ public class MainFragment extends Fragment {
     private RecyclerMainAdapter mainAdapter;
     private LinearLayoutManager linearLayoutManager;
     private Subscription mainSubscription;
+    private String type;
+
     @Bind(R.id.recycler_view_main)
     RecyclerView mRecyclerView;
 
@@ -59,10 +61,15 @@ public class MainFragment extends Fragment {
         linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        String type = getArguments().getString(getString(R.string.bundle_fragment));
-        Toast.makeText(getActivity(), type, Toast.LENGTH_SHORT).show();
+        type = getArguments().getString(getString(R.string.bundle_fragment));
         callapi(type);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        callapi(type);
     }
 
     private void callapi(String type) {
