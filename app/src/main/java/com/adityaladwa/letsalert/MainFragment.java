@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.adityaladwa.letsalert.adapter.RecyclerMainAdapter;
 import com.adityaladwa.letsalert.api.EndPoint;
@@ -23,6 +24,7 @@ import butterknife.ButterKnife;
 import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 import retrofit2.Retrofit;
 import rx.Observer;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -33,11 +35,11 @@ public class MainFragment extends Fragment {
     public static final String TAG = MainFragment.class.getSimpleName();
 
     private RecyclerMainAdapter mainAdapter;
-    private ArrayList<EventList.Event> mEvents;
     private LinearLayoutManager linearLayoutManager;
-
+    private Subscription mainSubscription;
     @Bind(R.id.recycler_view_main)
     RecyclerView mRecyclerView;
+
 
     @Inject
     Retrofit retrofit;
@@ -57,37 +59,50 @@ public class MainFragment extends Fragment {
         linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        callapi();
+        String type = getArguments().getString(getString(R.string.bundle_fragment));
+        Toast.makeText(getActivity(), type, Toast.LENGTH_SHORT).show();
+        callapi(type);
         return view;
     }
 
-    private void callapi() {
+    private void callapi(String type) {
 
-        retrofit.create(EndPoint.class).getEventsRx().subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .unsubscribeOn(Schedulers.io())
-                .subscribe(new Observer<ArrayList<EventList.Event>>() {
-                    @Override
-                    public void onCompleted() {
-                        smoothProgressBar.setVisibility(View.GONE);
-                    }
+        Observer<ArrayList<EventList.Event>> observer = new Observer<ArrayList<EventList.Event>>() {
+            @Override
+            public void onCompleted() {
+                smoothProgressBar.setVisibility(View.GONE);
+            }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d(TAG, e.getMessage(), e);
-                    }
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, e.getMessage(), e);
+            }
 
-                    @Override
-                    public void onNext(ArrayList<EventList.Event> events) {
-                        mainAdapter = new RecyclerMainAdapter(events, getActivity());
-                        mainAdapter.notifyDataSetChanged();
-                        mRecyclerView.setAdapter(mainAdapter);
-                        Log.d(TAG, events.get(0).getName());
-                    }
-                });
+            @Override
+            public void onNext(ArrayList<EventList.Event> events) {
+                mainAdapter = new RecyclerMainAdapter(events, getActivity());
+                mainAdapter.notifyDataSetChanged();
+                mRecyclerView.setAdapter(mainAdapter);
+                Log.d(TAG, events.get(0).getName());
+            }
+        };
+
+        if (type == getString(R.string.bundle_main))
+            mainSubscription = retrofit.create(EndPoint.class).getEventsRx().subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .unsubscribeOn(Schedulers.io())
+                    .subscribe(observer);
+
+
     }
 
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mainSubscription != null)
+            mainSubscription.unsubscribe();
+    }
 }
 
 

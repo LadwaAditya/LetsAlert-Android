@@ -10,4 +10,10 @@
     <string name="extra_token">extra_token</string>
     <string name="pref_user_name">pref_user_name</string>
     <string name="pref_user_email">pref_user_email</string>
+    <string name="bundle_fragment">bundle_fragment</string>
+    <string name="bundle_main">Main</string>
+    <string name="bundle_police">Police</string>
+    <string name="bundle_electricity">Electricity</string>
+    <string name="bundle_water">Water</string>
+    <string name="bundle_college">College</string>
 </resources>

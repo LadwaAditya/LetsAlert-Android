@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity
     public static final String TAG = MainActivity.class.getSimpleName();
 
     SharedPreferences mSharedPreferences;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +38,17 @@ public class MainActivity extends AppCompatActivity
         }
         if (findViewById(R.id.main_frame_container) != null) {
             Log.d(TAG, "Frame container present");
-            getSupportFragmentManager().beginTransaction().add(R.id.main_frame_container, new MainFragment()).commit();
+            bundle = new Bundle();
+            bundle.putString(getString(R.string.bundle_fragment), getString(R.string.bundle_main));
+            startFragment(bundle);
         }
 
+    }
+
+    private void startFragment(Bundle bundle) {
+        Fragment fragment = new MainFragment();
+        fragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_container, fragment).commit();
     }
 
     private void setupDrawer() {
@@ -73,12 +83,19 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            bundle.putString(getString(R.string.bundle_fragment), getString(R.string.bundle_police));
+            startFragment(bundle);
         } else if (id == R.id.nav_gallery) {
+            bundle.putString(getString(R.string.bundle_fragment), getString(R.string.bundle_electricity));
+            startFragment(bundle);
 
         } else if (id == R.id.nav_slideshow) {
+            bundle.putString(getString(R.string.bundle_fragment), getString(R.string.bundle_water));
+            startFragment(bundle);
 
         } else if (id == R.id.nav_manage) {
-
+            bundle.putString(getString(R.string.bundle_fragment), getString(R.string.bundle_college));
+            startFragment(bundle);
 
         }
 
