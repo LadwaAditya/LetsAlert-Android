@@ -5,7 +5,6 @@ import com.adityaladwa.letsalert.api.model.People;
 
 import java.util.ArrayList;
 
-import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -16,8 +15,7 @@ import rx.Observable;
  * Created by Aditya on 23-Apr-16.
  */
 public interface EndPoint {
-    @POST("/api/people")
-    Call<People> signUp(@Body People people);
+
 
     @Headers("Content-Type: application/json")
     @POST("/api/people")
@@ -25,4 +23,17 @@ public interface EndPoint {
 
     @GET("/api/eventalertsall")
     Observable<ArrayList<EventList.Event>> getEventsRx();
+
+    @GET("/api/eventalerts/police")
+    Observable<ArrayList<EventList.Event>> getPoliceEventsRx();
+
+    @GET("/api/eventalerts/electricity")
+    Observable<ArrayList<EventList.Event>> getElectricityEventsRx();
+
+    @GET("/api/eventalerts/water")
+    Observable<ArrayList<EventList.Event>> getWaterEventsRx();
+
+    @GET("/api/eventalerts/college")
+    Observable<ArrayList<EventList.Event>> getCollegeEventsRx();
+
 }

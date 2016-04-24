@@ -80,15 +80,41 @@ public class MainFragment extends Fragment {
 
             @Override
             public void onNext(ArrayList<EventList.Event> events) {
-                mainAdapter = new RecyclerMainAdapter(events, getActivity());
-                mainAdapter.notifyDataSetChanged();
-                mRecyclerView.setAdapter(mainAdapter);
-                Log.d(TAG, events.get(0).getName());
+                if (events.size() == 0) {
+                    smoothProgressBar.setVisibility(View.GONE);
+                    Toast.makeText(getActivity(), "No events in this category", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    mainAdapter = new RecyclerMainAdapter(events, getActivity());
+                    mainAdapter.notifyDataSetChanged();
+                    mRecyclerView.setAdapter(mainAdapter);
+                    Log.d(TAG, events.get(0).getName());
+                }
             }
         };
 
         if (type == getString(R.string.bundle_main))
             mainSubscription = retrofit.create(EndPoint.class).getEventsRx().subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .unsubscribeOn(Schedulers.io())
+                    .subscribe(observer);
+        else if (type == getString(R.string.bundle_police))
+            retrofit.create(EndPoint.class).getPoliceEventsRx().subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .unsubscribeOn(Schedulers.io())
+                    .subscribe(observer);
+        else if (type == getString(R.string.bundle_electricity))
+            retrofit.create(EndPoint.class).getElectricityEventsRx().subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .unsubscribeOn(Schedulers.io())
+                    .subscribe(observer);
+        else if (type == getString(R.string.bundle_water))
+            retrofit.create(EndPoint.class).getWaterEventsRx().subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .unsubscribeOn(Schedulers.io())
+                    .subscribe(observer);
+        else if (type == getString(R.string.bundle_college))
+            retrofit.create(EndPoint.class).getCollegeEventsRx().subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .unsubscribeOn(Schedulers.io())
                     .subscribe(observer);
