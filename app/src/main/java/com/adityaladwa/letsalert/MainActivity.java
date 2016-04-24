@@ -80,19 +80,24 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_all) {
+            bundle.putString(getString(R.string.bundle_fragment), getString(R.string.bundle_main));
+            startFragment(bundle);
+        }
+
+        if (id == R.id.nav_police) {
             // Handle the camera action
             bundle.putString(getString(R.string.bundle_fragment), getString(R.string.bundle_police));
             startFragment(bundle);
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_electricityy) {
             bundle.putString(getString(R.string.bundle_fragment), getString(R.string.bundle_electricity));
             startFragment(bundle);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_water) {
             bundle.putString(getString(R.string.bundle_fragment), getString(R.string.bundle_water));
             startFragment(bundle);
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_college) {
             bundle.putString(getString(R.string.bundle_fragment), getString(R.string.bundle_college));
             startFragment(bundle);
 
