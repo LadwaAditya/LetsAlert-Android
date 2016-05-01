@@ -77,7 +77,7 @@ public class MainFragment extends Fragment {
         callapi(type);
     }
 
-    private void callapi(String type) {
+    private void callapi(final String type) {
 
         Observer<ArrayList<EventList.Event>> observer = new Observer<ArrayList<EventList.Event>>() {
             @Override
@@ -97,7 +97,12 @@ public class MainFragment extends Fragment {
                     Toast.makeText(getActivity(), "No events in this category", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    mainAdapter = new RecyclerMainAdapter(events, getActivity());
+                    mainAdapter = new RecyclerMainAdapter(events, new RecyclerMainAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(EventList.Event item) {
+                            Toast.makeText(getActivity(), item.getName(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     mainAdapter.notifyDataSetChanged();
                     mRecyclerView.setAdapter(mainAdapter);
                     Log.d(TAG, events.get(0).getName());

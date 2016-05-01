@@ -1,6 +1,5 @@
 package com.adityaladwa.letsalert.adapter;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,11 +22,11 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
     private static final String LOG_TAG = RecyclerMainAdapter.class.getSimpleName();
 
     private ArrayList<EventList.Event> mEventList;
-    private Context mContext;
+    private OnItemClickListener mlistener;
 
-    public RecyclerMainAdapter(ArrayList<EventList.Event> mEventList, Context mContext) {
+    public RecyclerMainAdapter(ArrayList<EventList.Event> mEventList, OnItemClickListener listener) {
         this.mEventList = mEventList;
-        this.mContext = mContext;
+        this.mlistener = listener;
     }
 
     @Override
@@ -38,9 +37,8 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
 
     @Override
     public void onBindViewHolder(ReviewViewHolder holder, int position) {
+        holder.bind(mEventList.get(position), mlistener);
 
-        holder.txTitle.setText(mEventList.get(position).getName());
-        holder.tvDEsc.setText(mEventList.get(position).getDescription());
 
     }
 
@@ -62,11 +60,25 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
 
         public ReviewViewHolder(View itemView) {
             super(itemView);
-
             ButterKnife.bind(this, itemView);
         }
 
+        public void bind(final EventList.Event item, final RecyclerMainAdapter.OnItemClickListener listener) {
+            txTitle.setText(item.getName());
+            tvDEsc.setText(item.getDescription());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mlistener.onItemClick(item);
+                }
+            });
+        }
 
+
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(EventList.Event item);
     }
 }
 
