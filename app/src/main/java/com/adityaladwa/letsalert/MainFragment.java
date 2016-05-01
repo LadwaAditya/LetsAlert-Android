@@ -1,5 +1,7 @@
 package com.adityaladwa.letsalert;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -62,6 +64,9 @@ public class MainFragment extends Fragment {
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
         type = getArguments().getString(getString(R.string.bundle_fragment));
+        NotificationManager notificationManager =
+                (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancelAll();
         callapi(type);
         return view;
     }
