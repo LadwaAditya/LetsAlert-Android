@@ -5,6 +5,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="action_subscribe">Subscribe</string>
     <string name="pref_login">login</string>
     <string name="pref_token">token</string>
     <string name="extra_token">extra_token</string>
@@ -16,4 +17,8 @@
     <string name="bundle_electricity">Electricity</string>
     <string name="bundle_water">Water</string>
     <string name="bundle_college">College</string>
+    <string name="pref_subscribe_police">pref_subscribe_police</string>
+    <string name="pref_subscribe_water">pref_subscribe_water</string>
+    <string name="pref_subscribe_electricity">pref_subscribe_electricity</string>
+    <string name="pref_subscribe_college">pref_subscribe_college</string>
 </resources>

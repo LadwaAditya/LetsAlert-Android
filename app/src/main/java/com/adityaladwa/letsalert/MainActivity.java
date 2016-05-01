@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -101,6 +102,8 @@ public class MainActivity extends AppCompatActivity
             bundle.putString(getString(R.string.bundle_fragment), getString(R.string.bundle_college));
             startFragment(bundle);
 
+        } else if (id == R.id.nav_subscribe) {
+            startActivity(new Intent(MainActivity.this, SubscribeActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
