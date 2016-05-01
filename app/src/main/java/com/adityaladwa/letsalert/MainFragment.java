@@ -33,7 +33,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by Aditya on 24-Apr-16.
  */
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements RecyclerMainAdapter.OnItemClickListener {
     public static final String TAG = MainFragment.class.getSimpleName();
 
     private RecyclerMainAdapter mainAdapter;
@@ -97,12 +97,7 @@ public class MainFragment extends Fragment {
                     Toast.makeText(getActivity(), "No events in this category", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    mainAdapter = new RecyclerMainAdapter(events, new RecyclerMainAdapter.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(EventList.Event item) {
-                            Toast.makeText(getActivity(), item.getName(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    mainAdapter = new RecyclerMainAdapter(events, MainFragment.this);
                     mainAdapter.notifyDataSetChanged();
                     mRecyclerView.setAdapter(mainAdapter);
                     Log.d(TAG, events.get(0).getName());
@@ -145,6 +140,11 @@ public class MainFragment extends Fragment {
         super.onStop();
         if (mainSubscription != null)
             mainSubscription.unsubscribe();
+    }
+
+    @Override
+    public void onItemClick(EventList.Event item) {
+        Toast.makeText(getActivity(), item.getName(), Toast.LENGTH_SHORT).show();
     }
 }
 
