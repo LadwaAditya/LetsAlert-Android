@@ -9,4 +9,34 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.adityaladwa.letsalert.SubscribeActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <CheckBox
+            android:id="@+id/chk_police"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Police" />
+
+        <CheckBox
+            android:id="@+id/chk_electricity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Electricity" />
+
+        <CheckBox
+            android:id="@+id/chk_water"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Water" />
+
+        <CheckBox
+            android:id="@+id/chk_college"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="College" />
+    </LinearLayout>
+
 </RelativeLayout>
