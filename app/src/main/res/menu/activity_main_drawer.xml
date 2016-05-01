@@ -4,27 +4,27 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_all"
-            android:icon="@drawable/ic_menu_all"
+            android:icon="@drawable/all"
             android:title="All events" />
         <item
             android:id="@+id/nav_police"
-            android:icon="@drawable/ic_menu_people"
+            android:icon="@drawable/people"
             android:title="Police" />
         <item
             android:id="@+id/nav_electricityy"
-            android:icon="@drawable/ic_menu_light"
+            android:icon="@drawable/light"
             android:title="Electricity" />
         <item
             android:id="@+id/nav_water"
-            android:icon="@drawable/ic_menu_drink"
+            android:icon="@drawable/drink"
             android:title="Water" />
         <item
             android:id="@+id/nav_college"
-            android:icon="@drawable/ic_menu_graduation"
+            android:icon="@drawable/graduation"
             android:title="College" />
         <item
             android:id="@+id/nav_subscribe"
-            android:icon="@drawable/ic_menu_graduation"
+            android:icon="@drawable/graduation"
             android:title="Subscribe" />
     </group>
 

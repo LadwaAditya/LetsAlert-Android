@@ -1,7 +1,0 @@
-<resources>
-    <item name="ic_menu_light" type="drawable">@drawable/light</item>
-    <item name="ic_menu_drink" type="drawable">@drawable/drink</item>
-    <item name="ic_menu_graduation" type="drawable">@drawable/graduation</item>
-    <item name="ic_menu_people" type="drawable">@drawable/people</item>
-    <item name="ic_menu_all" type="drawable">@drawable/all</item>
-</resources>
