@@ -58,7 +58,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".SubscribeActivity"></activity>
+        <activity android:name=".SubscribeActivity" />
+        <activity android:name=".ComplaintActivity"></activity>
     </application>
 
 </manifest>

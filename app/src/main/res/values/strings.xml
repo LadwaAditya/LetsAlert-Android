@@ -21,4 +21,11 @@
     <string name="pref_subscribe_water">pref_subscribe_water</string>
     <string name="pref_subscribe_electricity">pref_subscribe_electricity</string>
     <string name="pref_subscribe_college">pref_subscribe_college</string>
+
+    <string-array name="department_array">
+        <item>Police</item>
+        <item>Electricity</item>
+        <item>Water</item>
+        <item>College</item>
+    </string-array>
 </resources>
