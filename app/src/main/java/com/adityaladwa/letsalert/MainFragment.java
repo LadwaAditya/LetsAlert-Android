@@ -146,7 +146,9 @@ public class MainFragment extends Fragment implements RecyclerMainAdapter.OnItem
     @Override
     public void onItemClick(EventList.Event item) {
         Toast.makeText(getActivity(), item.getName(), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getActivity(), EventDetailActivity.class));
+        Intent intent = new Intent(getActivity(), EventDetailActivity.class);
+        intent.putExtra("extra_event", item);
+        startActivity(intent);
     }
 }
 

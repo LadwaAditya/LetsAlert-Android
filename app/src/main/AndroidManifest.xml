@@ -60,7 +60,7 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SubscribeActivity" />
         <activity android:name=".ComplaintActivity" />
-        <activity android:name=".EventDetailActivity"></activity>
+        <activity android:name=".EventDetailActivity"/>
     </application>
 
 </manifest>
