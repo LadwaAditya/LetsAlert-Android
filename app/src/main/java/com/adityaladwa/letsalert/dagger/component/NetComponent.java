@@ -3,6 +3,7 @@ package com.adityaladwa.letsalert.dagger.component;
 
 import android.content.SharedPreferences;
 
+import com.adityaladwa.letsalert.ComplaintActivity;
 import com.adityaladwa.letsalert.MainActivity;
 import com.adityaladwa.letsalert.MainFragment;
 import com.adityaladwa.letsalert.SignUpActivity;
@@ -24,6 +25,8 @@ public interface NetComponent {
     void inject(MainFragment fragment);
 
     void inject(SignUpActivity activity);
+
+    void inject(ComplaintActivity activity);
 
 
     SharedPreferences getSharedPreference();

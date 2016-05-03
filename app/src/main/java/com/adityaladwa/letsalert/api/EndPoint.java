@@ -1,5 +1,6 @@
 package com.adityaladwa.letsalert.api;
 
+import com.adityaladwa.letsalert.api.model.Complaint;
 import com.adityaladwa.letsalert.api.model.EventList;
 import com.adityaladwa.letsalert.api.model.People;
 
@@ -20,6 +21,9 @@ public interface EndPoint {
     @Headers("Content-Type: application/json")
     @POST("/api/people")
     Observable<People> signUpRx(@Body People people);
+
+    @POST("/api/complaints")
+    Observable<Complaint> postComplaint(@Body Complaint complaint);
 
     @GET("/api/eventalertsall")
     Observable<ArrayList<EventList.Event>> getEventsRx();
