@@ -45,7 +45,6 @@ public class MainFragment extends Fragment implements RecyclerMainAdapter.OnItem
     @Bind(R.id.recycler_view_main)
     RecyclerView mRecyclerView;
 
-
     @Inject
     Retrofit retrofit;
 
