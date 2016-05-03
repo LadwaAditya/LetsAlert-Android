@@ -2,6 +2,7 @@ package com.adityaladwa.letsalert;
 
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -145,6 +146,7 @@ public class MainFragment extends Fragment implements RecyclerMainAdapter.OnItem
     @Override
     public void onItemClick(EventList.Event item) {
         Toast.makeText(getActivity(), item.getName(), Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getActivity(), EventDetailActivity.class));
     }
 }
 

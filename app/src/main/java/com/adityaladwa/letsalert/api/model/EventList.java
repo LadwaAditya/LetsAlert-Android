@@ -1,5 +1,8 @@
 package com.adityaladwa.letsalert.api.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 /**
@@ -17,9 +20,29 @@ public class EventList {
         this.events = events;
     }
 
-    public static class Event {
+    public static class Event implements Parcelable {
         public String name;
         public String description;
+
+        protected Event(Parcel in) {
+            name = in.readString();
+            description = in.readString();
+        }
+
+        public Event() {
+        }
+
+        public static final Creator<Event> CREATOR = new Creator<Event>() {
+            @Override
+            public Event createFromParcel(Parcel in) {
+                return new Event(in);
+            }
+
+            @Override
+            public Event[] newArray(int size) {
+                return new Event[size];
+            }
+        };
 
         public String getName() {
             return name;
@@ -35,6 +58,17 @@ public class EventList {
 
         public void setDescription(String description) {
             this.description = description;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(name);
+            dest.writeString(description);
         }
     }
 }
