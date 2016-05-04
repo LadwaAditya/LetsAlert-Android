@@ -14,8 +14,10 @@
         android:orientation="vertical">
 
         <ImageView
+            android:src="@drawable/police"
             android:id="@+id/imageview_event_image"
             android:layout_width="100dp"
+            android:scaleType="centerCrop"
             android:layout_height="100dp"
             android:layout_margin="10dp" />
 
@@ -24,7 +26,9 @@
             android:id="@+id/textview_event_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@id/imageview_event_image"
             android:layout_toRightOf="@id/imageview_event_image"
             android:contentDescription="@null"
             android:orientation="vertical"
@@ -38,8 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/textview_event_title"
             android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_toRightOf="@id/imageview_event_image"
             android:paddingBottom="10dp"
             android:text="Event description kjsakdhaksdhkajsdhkjasdhkjashdkjsahdkjashdkjsahdkjhsadkjahsdkjahsdkjhsakdjhasdkjhsadkhaskjashdkjsahdkjhaskdjhaskd" />
