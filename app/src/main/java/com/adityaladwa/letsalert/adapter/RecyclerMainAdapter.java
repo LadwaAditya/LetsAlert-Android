@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.adityaladwa.letsalert.R;
-import com.adityaladwa.letsalert.api.model.EventList;
+import com.adityaladwa.letsalert.api.model.MyEvent;
 
 import java.util.ArrayList;
 
@@ -21,10 +21,10 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
 
     private static final String LOG_TAG = RecyclerMainAdapter.class.getSimpleName();
 
-    private ArrayList<EventList.Event> mEventList;
+    private ArrayList<MyEvent> mEventList;
     private OnItemClickListener mlistener;
 
-    public RecyclerMainAdapter(ArrayList<EventList.Event> mEventList, OnItemClickListener listener) {
+    public RecyclerMainAdapter(ArrayList<MyEvent> mEventList, OnItemClickListener listener) {
         this.mEventList = mEventList;
         this.mlistener = listener;
     }
@@ -63,7 +63,7 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
             ButterKnife.bind(this, itemView);
         }
 
-        public void bind(final EventList.Event item, final RecyclerMainAdapter.OnItemClickListener listener) {
+        public void bind(final MyEvent item, final RecyclerMainAdapter.OnItemClickListener listener) {
             txTitle.setText(item.getName());
             tvDEsc.setText(item.getDescription());
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +78,7 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
     }
 
     public interface OnItemClickListener {
-        void onItemClick(EventList.Event item);
+        void onItemClick(MyEvent item);
     }
 }
 

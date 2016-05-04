@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.adityaladwa.letsalert.adapter.RecyclerMainAdapter;
 import com.adityaladwa.letsalert.api.EndPoint;
-import com.adityaladwa.letsalert.api.model.EventList;
+import com.adityaladwa.letsalert.api.model.MyEvent;
 
 import java.util.ArrayList;
 
@@ -32,7 +32,6 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- *
  * Created by Aditya on 24-Apr-16.
  */
 public class MainFragment extends Fragment implements RecyclerMainAdapter.OnItemClickListener {
@@ -80,7 +79,7 @@ public class MainFragment extends Fragment implements RecyclerMainAdapter.OnItem
 
     private void callapi(final String type) {
 
-        Observer<ArrayList<EventList.Event>> observer = new Observer<ArrayList<EventList.Event>>() {
+        Observer<ArrayList<MyEvent>> observer = new Observer<ArrayList<MyEvent>>() {
             @Override
             public void onCompleted() {
                 smoothProgressBar.setVisibility(View.GONE);
@@ -92,7 +91,7 @@ public class MainFragment extends Fragment implements RecyclerMainAdapter.OnItem
             }
 
             @Override
-            public void onNext(ArrayList<EventList.Event> events) {
+            public void onNext(ArrayList<MyEvent> events) {
                 if (events.size() == 0) {
                     smoothProgressBar.setVisibility(View.GONE);
                     Toast.makeText(getActivity(), "No events in this category", Toast.LENGTH_SHORT).show();
@@ -144,7 +143,7 @@ public class MainFragment extends Fragment implements RecyclerMainAdapter.OnItem
     }
 
     @Override
-    public void onItemClick(EventList.Event item) {
+    public void onItemClick(MyEvent item) {
         Toast.makeText(getActivity(), item.getName(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), EventDetailActivity.class);
         intent.putExtra("extra_event", item);
