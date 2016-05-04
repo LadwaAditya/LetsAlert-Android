@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.adityaladwa.letsalert.api.model.MyEvent;
 import com.bumptech.glide.Glide;
@@ -33,12 +34,14 @@ public class EventDetailActivity extends AppCompatActivity {
         toolbar.setTitle(event.getName());
         textViewEventDetail.setText(event.getDescription());
 
+        Toast.makeText(this, event.getUser().getDepartment(), Toast.LENGTH_SHORT).show();
+
         switch (event.getUser().getDepartment()) {
             case "police":
                 Glide.with(this).load(R.drawable.police).crossFade().into(backdrop);
                 break;
             case "water":
-                Glide.with(this).load(R.drawable.water).crossFade().into(backdrop);
+                Glide.with(this).load(R.drawable.water2).crossFade().into(backdrop);
                 break;
             case "electricity":
                 Glide.with(this).load(R.drawable.electricity2).crossFade().into(backdrop);
@@ -49,6 +52,5 @@ public class EventDetailActivity extends AppCompatActivity {
 
         }
 
-        Glide.with(this).load(R.drawable.police).crossFade().into(backdrop);
     }
 }

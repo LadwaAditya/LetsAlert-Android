@@ -57,7 +57,6 @@ public class MainFragment extends Fragment implements RecyclerMainAdapter.OnItem
         Log.d(TAG, "Inflated Fragment layout");
         View view = inflater.inflate(R.layout.content_main, container, false);
         ButterKnife.bind(this, view);
-
         ((App) getActivity().getApplication()).getNetComponent().inject(this);
 
         linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -144,7 +143,6 @@ public class MainFragment extends Fragment implements RecyclerMainAdapter.OnItem
 
     @Override
     public void onItemClick(MyEvent item) {
-        Toast.makeText(getActivity(), item.getName(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), EventDetailActivity.class);
         intent.putExtra("extra_event", item);
         startActivity(intent);
