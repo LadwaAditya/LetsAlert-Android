@@ -32,6 +32,23 @@ public class EventDetailActivity extends AppCompatActivity {
         MyEvent event = getIntent().getParcelableExtra("extra_event");
         toolbar.setTitle(event.getName());
         textViewEventDetail.setText(event.getDescription());
+
+        switch (event.getUser().getDepartment()) {
+            case "police":
+                Glide.with(this).load(R.drawable.police).crossFade().into(backdrop);
+                break;
+            case "water":
+                Glide.with(this).load(R.drawable.water).crossFade().into(backdrop);
+                break;
+            case "electricity":
+                Glide.with(this).load(R.drawable.electricity2).crossFade().into(backdrop);
+                break;
+            case "college":
+                Glide.with(this).load(R.drawable.college).crossFade().into(backdrop);
+                break;
+
+        }
+
         Glide.with(this).load(R.drawable.police).crossFade().into(backdrop);
     }
 }
