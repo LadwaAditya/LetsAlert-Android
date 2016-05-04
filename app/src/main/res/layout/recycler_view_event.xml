@@ -13,11 +13,19 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/imageview_event_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp" />
+
+
         <TextView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/textview_event_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:layout_toRightOf="@id/imageview_event_image"
             android:contentDescription="@null"
             android:orientation="vertical"
             android:text="Title"
@@ -26,14 +34,15 @@
 
         <TextView
             android:id="@+id/textview_event_description"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/textview_event_title"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
+            android:layout_toRightOf="@id/imageview_event_image"
             android:paddingBottom="10dp"
-            android:text="Event description" />
+            android:text="Event description kjsakdhaksdhkajsdhkjasdhkjashdkjsahdkjashdkjsahdkjhsadkjahsdkjahsdkjhsakdjhasdkjhsadkhaskjashdkjsahdkjhaskdjhaskd" />
 
 
     </RelativeLayout>
