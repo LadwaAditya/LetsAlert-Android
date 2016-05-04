@@ -18,7 +18,7 @@
             android:layout_height="72dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
-            android:src="@drawable/common_full_open_on_phone" />
+            android:src="@drawable/letsalert" />
 
         <!-- Name Label -->
         <android.support.design.widget.TextInputLayout
