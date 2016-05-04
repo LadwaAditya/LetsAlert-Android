@@ -32,6 +32,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
+ *
  * Created by Aditya on 24-Apr-16.
  */
 public class MainFragment extends Fragment implements RecyclerMainAdapter.OnItemClickListener {
