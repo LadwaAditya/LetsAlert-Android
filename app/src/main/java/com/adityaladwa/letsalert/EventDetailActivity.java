@@ -34,7 +34,6 @@ public class EventDetailActivity extends AppCompatActivity {
         toolbar.setTitle(event.getName());
         textViewEventDetail.setText(event.getDescription());
 
-        Toast.makeText(this, event.getUser().getDepartment(), Toast.LENGTH_SHORT).show();
 
         switch (event.getUser().getDepartment()) {
             case "police":
