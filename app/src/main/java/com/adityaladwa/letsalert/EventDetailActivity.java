@@ -44,7 +44,7 @@ public class EventDetailActivity extends AppCompatActivity {
                 Glide.with(this).load(R.drawable.water2).crossFade().into(backdrop);
                 break;
             case "electricity":
-                Glide.with(this).load(R.drawable.electricity2).crossFade().into(backdrop);
+                Glide.with(this).load(R.drawable.electricity).crossFade().into(backdrop);
                 break;
             case "college":
                 Glide.with(this).load(R.drawable.college).crossFade().into(backdrop);

@@ -73,7 +73,8 @@ public class MainFragment extends Fragment implements RecyclerMainAdapter.OnItem
     @Override
     public void onResume() {
         super.onResume();
-        callapi(type);
+//        callapi(type);
+//        Toast.makeText(getActivity(), "onResume", Toast.LENGTH_SHORT).show();
     }
 
     private void callapi(final String type) {
@@ -96,7 +97,7 @@ public class MainFragment extends Fragment implements RecyclerMainAdapter.OnItem
                     Toast.makeText(getActivity(), "No events in this category", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    mainAdapter = new RecyclerMainAdapter(events, MainFragment.this);
+                    mainAdapter = new RecyclerMainAdapter(events, MainFragment.this, getActivity());
                     mainAdapter.notifyDataSetChanged();
                     mRecyclerView.setAdapter(mainAdapter);
                     Log.d(TAG, events.get(0).getName());

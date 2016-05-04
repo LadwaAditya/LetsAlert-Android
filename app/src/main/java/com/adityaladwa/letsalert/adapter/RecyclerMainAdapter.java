@@ -1,5 +1,6 @@
 package com.adityaladwa.letsalert.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,10 +24,12 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
 
     private ArrayList<MyEvent> mEventList;
     private OnItemClickListener mlistener;
+    private Context mContext;
 
-    public RecyclerMainAdapter(ArrayList<MyEvent> mEventList, OnItemClickListener listener) {
+    public RecyclerMainAdapter(ArrayList<MyEvent> mEventList, OnItemClickListener listener, Context context) {
         this.mEventList = mEventList;
         this.mlistener = listener;
+        this.mContext = context;
     }
 
     @Override
@@ -38,8 +41,6 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
     @Override
     public void onBindViewHolder(ReviewViewHolder holder, int position) {
         holder.bind(mEventList.get(position), mlistener);
-
-
     }
 
     @Override
